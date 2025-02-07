@@ -1,9 +1,13 @@
-import { useState } from 'react';
-import { useDispatch } from 'react-redux';
-import { admin_login } from '../../store/Reducers/authReducer';
-
+import { useEffect, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { admin_login, messageClear } from '../../store/Reducers/authReducer';
+import { PropagateLoader } from 'react-spinners';
+import toast from 'react-hot-toast';
 const AdminLogin = () => {
-  const dispatch = useDispatch()
+  const dispatch = useDispatch();
+  const { loader, errorMessage, successMsg } = useSelector(
+    (state) => state.auth,
+  );
 
   const [state, setState] = useState({
     email: '',
@@ -15,9 +19,24 @@ const AdminLogin = () => {
   }
   function submit(e) {
     e.preventDefault();
-    dispatch(admin_login(state))
-    // console.log(state);
+    dispatch(admin_login(state));
   }
+
+  const overrideStyle = {
+    display: 'flex',
+    margin: '0 auto',
+    height: '24px',
+    justifyContent: 'center',
+    alignitems: 'center',
+  };
+
+  useEffect(() => {
+    if (errorMessage) {
+      toast.error(errorMessage);
+      dispatch(messageClear());
+    }
+  }, [errorMessage]);
+
   return (
     <div className="min-w-screen min-h-screen bg-[#cdcae9] flex justify-center items-center">
       <div className="w-[350px text-[#ffffff] p-2]">
@@ -60,8 +79,15 @@ const AdminLogin = () => {
               />
             </div>
 
-            <button className="bg-slate-800 w-full hover:shadow-blue-300/50 hover:shadow-lg text-white rounded-md px-7 py-2 mb-2">
-              Login
+            <button
+              disabled={loader}
+              className="bg-slate-800 w-full hover:shadow-blue-300/50 hover:shadow-lg text-white rounded-md px-7 py-2 mb-2"
+            >
+              {loader ? (
+                <PropagateLoader cssOverride={overrideStyle} color="#fff" />
+              ) : (
+                'Login'
+              )}
             </button>
           </form>
         </div>
