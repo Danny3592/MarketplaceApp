@@ -4,6 +4,9 @@ import { FixedSizeList as List } from 'react-window';
 function handleOnWheel({ deltaY }) {
   console.log('handleOnWheel', deltaY);
 }
+function test(){
+  return;
+}
 
 const outerElementType = forwardRef((props, ref) => {
   return <div ref={ref} onWheel={handleOnWheel} {...props} />;
@@ -30,6 +33,7 @@ const PaymentRequest = () => {
       </div>
     );
   };
+
 
   return (
     <div className="px-2 lg:px-7 pt-5">
