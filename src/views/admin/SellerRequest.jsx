@@ -4,14 +4,15 @@ import Pagination from '../Pagination';
 import { FaEdit, FaTrash } from 'react-icons/fa';
 import { GrView } from 'react-icons/gr';
 
-const Sellers = () => {
+const SellerRequest = () => {
   const [currentPage, setCurrentPage] = useState(1);
   const [searchTerm, setSearchTerm] = useState(null);
   const [parPage, setParpage] = useState(5);
   const [show, setShow] = useState(false);
   return (
     <div className="px-2 lg:px-7 pt-5">
-      <h1 className="text-[20px] font-bold mb-3">Seller</h1>
+      <h1 className="text-[20px] font-bold mb-3">Seller Request</h1>
+
       <div className="w-full p-4 bg-[#6a5fdf] rounded-md">
         <div className="flex justify-between items-center">
           <select
@@ -43,15 +44,11 @@ const Sellers = () => {
                 <th scope="col" className="py-3 px-4">
                   NO
                 </th>
-                <th scope="col" className="py-3 px-4">
-                  Image
-                </th>
+
                 <th scope="col" className="py-3 px-4">
                   Name
                 </th>
-                <th scope="col" className="py-3 px-4">
-                  Shop Name
-                </th>
+
                 <th scope="col" className="py-3 px-4">
                   Payment Status
                 </th>
@@ -59,10 +56,7 @@ const Sellers = () => {
                   Email
                 </th>
                 <th scope="col" className="py-3 px-4">
-                  Devision
-                </th>
-                <th scope="col" className="py-3 px-4">
-                  District
+                  Status
                 </th>
                 <th scope="col" className="py-3 px-4">
                   Action
@@ -72,67 +66,46 @@ const Sellers = () => {
             <tbody>
               {[1, 2, 3, 4, 5].map((d, i) => {
                 return (
-                  <tr key={i}>
+                  <tr key={i} className='border-b border-slate-700'>
                     <td
                       scope="row"
-                      className="py-1 px-4 font-medium whitespace-nowrap"
+                      className="py-2 px-4 font-medium whitespace-nowrap"
                     >
                       {d}
-                    </td>
-                    <td
-                      scope="row"
-                      className="py-1 px-4 font-medium whitespace-nowrap"
-                    >
-                      <img
-                        className="w-[45px] h-[45px] "
-                        src={`../../../public/images/category/${d}.jpg`}
-                        alt=""
-                      />
                     </td>
 
                     <td
                       scope="row"
-                      className="py-1 px-4 font-medium whitespace-nowrap"
+                      className="py-2 px-4 font-medium whitespace-nowrap"
                     >
                       Danny Xiao
                     </td>
+
                     <td
                       scope="row"
-                      className="py-1 px-4 font-medium whitespace-nowrap"
+                      className="py-2 px-4 font-medium whitespace-nowrap"
                     >
-                      Easy Shop
+                      Inactive
                     </td>
                     <td
                       scope="row"
-                      className="py-1 px-4 font-medium whitespace-nowrap"
-                    >
-                      Pending
-                    </td>
-                    <td
-                      scope="row"
-                      className="py-1 px-4 font-medium whitespace-nowrap"
+                      className="py-2 px-4 font-medium whitespace-nowrap"
                     >
                       cso35922gmail.com
                     </td>
                     <td
                       scope="row"
-                      className="py-1 px-4 font-medium whitespace-nowrap"
+                      className="py-2 px-4 font-medium whitespace-nowrap"
                     >
-                      Dhaka
-                    </td>
-                    <td
-                      scope="row"
-                      className="py-1 px-4 font-medium whitespace-nowrap"
-                    >
-                      Paltan
+                      <span>Pending</span>
                     </td>
 
                     <td
                       scope="row"
-                      className="py-1 px-4 font-medium whitespace-nowrap"
+                      className="py-2 px-4 font-medium whitespace-nowrap"
                     >
                       <div className="flex justify-start items-center gap-4 ">
-                        <Link className="px-[6px] py-[6px] bg-green-600 rounded hover:shadow-lg hover:shadow-green-500/50">
+                        <Link to={`/admin/dashboard/seller-request/details/2`} className="px-[6px] py-[6px] bg-green-600 rounded hover:shadow-lg hover:shadow-green-500/50">
                           <GrView />
                         </Link>
                       </div>
@@ -157,4 +130,4 @@ const Sellers = () => {
   );
 };
 
-export default Sellers;
+export default SellerRequest;

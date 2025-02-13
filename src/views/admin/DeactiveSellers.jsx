@@ -4,14 +4,15 @@ import Pagination from '../Pagination';
 import { FaEdit, FaTrash } from 'react-icons/fa';
 import { GrView } from 'react-icons/gr';
 
-const Sellers = () => {
+const DeactiveSellers = () => {
   const [currentPage, setCurrentPage] = useState(1);
   const [searchTerm, setSearchTerm] = useState(null);
   const [parPage, setParpage] = useState(5);
   const [show, setShow] = useState(false);
   return (
     <div className="px-2 lg:px-7 pt-5">
-      <h1 className="text-[20px] font-bold mb-3">Seller</h1>
+      <h1 className="text-[20px] font-bold mb-3">Deactive Seller</h1>
+
       <div className="w-full p-4 bg-[#6a5fdf] rounded-md">
         <div className="flex justify-between items-center">
           <select
@@ -49,9 +50,7 @@ const Sellers = () => {
                 <th scope="col" className="py-3 px-4">
                   Name
                 </th>
-                <th scope="col" className="py-3 px-4">
-                  Shop Name
-                </th>
+
                 <th scope="col" className="py-3 px-4">
                   Payment Status
                 </th>
@@ -59,10 +58,7 @@ const Sellers = () => {
                   Email
                 </th>
                 <th scope="col" className="py-3 px-4">
-                  Devision
-                </th>
-                <th scope="col" className="py-3 px-4">
-                  District
+                  Status
                 </th>
                 <th scope="col" className="py-3 px-4">
                   Action
@@ -96,12 +92,7 @@ const Sellers = () => {
                     >
                       Danny Xiao
                     </td>
-                    <td
-                      scope="row"
-                      className="py-1 px-4 font-medium whitespace-nowrap"
-                    >
-                      Easy Shop
-                    </td>
+
                     <td
                       scope="row"
                       className="py-1 px-4 font-medium whitespace-nowrap"
@@ -118,13 +109,7 @@ const Sellers = () => {
                       scope="row"
                       className="py-1 px-4 font-medium whitespace-nowrap"
                     >
-                      Dhaka
-                    </td>
-                    <td
-                      scope="row"
-                      className="py-1 px-4 font-medium whitespace-nowrap"
-                    >
-                      Paltan
+                      <span>Deactive</span>
                     </td>
 
                     <td
@@ -157,4 +142,4 @@ const Sellers = () => {
   );
 };
 
-export default Sellers;
+export default DeactiveSellers;

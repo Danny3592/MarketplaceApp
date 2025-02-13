@@ -32,6 +32,7 @@ const Pagination = ({
       btns.push(
         <li
           onClick={() => setPageNumber(i)}
+          key={i}
           className={`${
             pageNumber === i
               ? 'bg-indigo-300 shadow-lg shadow-indigo-300/50 text-white'
