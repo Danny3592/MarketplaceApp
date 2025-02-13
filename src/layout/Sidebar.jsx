@@ -2,15 +2,23 @@ import { useEffect, useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { getNav } from '../navigation';
 import { RiLogoutBoxLine } from 'react-icons/ri';
+import { useDispatch, useSelector } from 'react-redux';
 
 const Sidebar = ({ showSidebar, setShowSidebar }) => {
+
+
+  const dispatch = useDispatch();
+  const { role } = useSelector((state) => state.auth);
+
+ 
+
   const [allNav, setAllNav] = useState([]);
   const { pathname } = useLocation();
 
   useEffect(() => {
-    const navs = getNav('admin');
+    const navs = getNav(role);
     setAllNav([...navs]);
-  }, []);
+  }, [role]);
   function handleShowSidebar() {
     setShowSidebar((showSidebar) => {
       console.log(!showSidebar);

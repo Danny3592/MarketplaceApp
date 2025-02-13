@@ -57,7 +57,7 @@ const PaymentRequest = () => {
                 className="List"
                 height={350}
                 itemCount={100}
-                itemSize={20}
+                itemSize={35}
                 outerElementType={outerElementType}
               >
                 {Row}

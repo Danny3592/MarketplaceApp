@@ -1,8 +1,22 @@
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { FaGoogle } from 'react-icons/fa';
 import { FaFacebook } from 'react-icons/fa';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { PropagateLoader } from 'react-spinners';
+import { overrideStyle } from '../../utils/utils';
+import { seller_register,messageClear } from '../../store/Reducers/authReducer';
+import toast from 'react-hot-toast';
+
 const Register = () => {
+
+  
+
+  const navigate = useNavigate()
+  const dispatch = useDispatch();
+  const { loader, successMessage, errorMessage } = useSelector(
+    (state) => state.auth,
+  );
   const [state, setState] = useState({
     name: '',
     email: '',
@@ -14,10 +28,24 @@ const Register = () => {
     setState({ ...state, [name]: value });
   }
 
-  function submit(e){
-    e.preventDefault()
-    console.log(state)
+  function submit(e) {
+    e.preventDefault();
+    console.log('dqwdqw');
+    dispatch(seller_register(state));
   }
+
+  useEffect(() => {
+    if (errorMessage) {
+      toast.error(errorMessage);
+      dispatch(messageClear());
+    }
+    if (successMessage) {
+      toast.success(successMessage);
+      dispatch(messageClear());
+      navigate('/');
+    }
+  }, [successMessage, errorMessage]);
+
   return (
     <div className="min-w-screen min-h-screen bg-[#cdcae9] flex justify-center items-center">
       <div className="w-[350px text-[#ffffff] p-2]">
@@ -79,8 +107,15 @@ const Register = () => {
                 I agree to privacy policy & treams
               </label>
             </div>
-            <button className="bg-slate-800 w-full hover:shadow-blue-300/50 hover:shadow-lg text-white rounded-md px-7 py-2 mb-2">
-              Sign Up
+            <button
+              disabled={loader}
+              className="bg-slate-800 w-full hover:shadow-blue-300/50 hover:shadow-lg text-white rounded-md px-7 py-2 mb-2"
+            >
+              {loader ? (
+                <PropagateLoader cssOverride={overrideStyle} color="#fff" />
+              ) : (
+                'Sign Up'
+              )}
             </button>
 
             <div className="flex item-center mb-3 gap-3 justify-center">

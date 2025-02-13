@@ -28,7 +28,7 @@ const Header = ({ showSidebar, setShowSidebar }) => {
                 <h2 className='text-md font-bold'>Danny Xiao</h2>
                 <span className='text-[14px] w-full font-normal'>Admin</span>
               </div>
-              <img src="../../images/admin.jpg" alt="" className='w-[50px] h-[50px] rounded-full overflow-hidden'/>
+              <img src="http://localhost:5173/images/admin.jpg" alt="" className='w-[50px] h-[50px] rounded-full overflow-hidden'/>
             </div>
           </div>
         </div>
