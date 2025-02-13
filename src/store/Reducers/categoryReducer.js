@@ -50,6 +50,7 @@ export const categoryReducer = createSlice({
     errorMessage: '',
     loader: false,
     categorys: [],
+    totalCategory:0
   },
   reducers: {
     messageClear: (state, _) => {
